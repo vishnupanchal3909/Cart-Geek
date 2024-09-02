@@ -38,9 +38,29 @@ class _CurrentBookingItemState extends State<CurrentBookingItem> {
                       children: [
                         const Text(
                           'One Day Package',
-                          style: TextStyle(fontSize: 18, color: Colors.pink),
+                          style: TextStyle(fontSize: 18, color: Colors.pink,fontWeight: FontWeight.bold),
                         ),
-                        Align(
+                        Container(width: 100,height: 30,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Handle button press
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFFE36DA6),
+                              // Button color
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                            ),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Start',style: TextStyle(color: Colors.white,fontSize: 11.0),),
+                              ],
+                            ),
+                          ),
+                        ),
+                        /*Align(
                           alignment: Alignment.bottomRight,
                           child: ElevatedButton(
                             onPressed: () {
@@ -48,7 +68,7 @@ class _CurrentBookingItemState extends State<CurrentBookingItem> {
                             },
                             child: Text('Start'),
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                     Padding(

@@ -44,7 +44,7 @@ class _HomescreenState extends State<Homescreen> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.pink[50], // Light pink background color
+                      color: Color(0xFFF5B5CF), // Light pink background color
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                     padding: EdgeInsets.all(16.0),
@@ -65,18 +65,57 @@ class _HomescreenState extends State<Homescreen> {
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              ElevatedButton(
-                                onPressed: () {
-                                  // Handle button press
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.pinkAccent[200],
-                                  // Button color
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
+                              /*Container(
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF262f71),
+                                  // Hex color with full opacity
+                                  borderRadius:
+                                  BorderRadius.circular(8), // Rounded corners
+                                ),
+                                child: const Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.white,
+                                      size: 15.0,
+                                    ),
+                                    Text(
+                                      'Rate Us',
+                                      style: TextStyle(
+                                        color: Colors.white, // Text color
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),*/
+                              Container(
+                                width: 100,
+                                height: 30,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    // Handle button press
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Color(0xFF262f71),
+                                    // Button color
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Book Now',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 11.0),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                child: Text('Book Now'),
                               ),
                             ],
                           ),
@@ -111,7 +150,7 @@ class _HomescreenState extends State<Homescreen> {
           else
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (context, index) {
+                (context, index) {
                   final item = curBooking[index];
                   return CurrentBookingItem(
                     item: item,
@@ -128,11 +167,12 @@ class _HomescreenState extends State<Homescreen> {
           else
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (context, index) {
+                (context, index) {
                   final item = packageList[index];
                   return PackageItem(
                     item: item,
                     backgroundColor: _getCardColor(index),
+                    btnColor: _getButtonColor(index),
                   );
                 },
                 childCount: packageList.length,
@@ -187,15 +227,25 @@ class _HomescreenState extends State<Homescreen> {
 
   Color _getCardColor(int index) {
     // Alternate card colors Red, Green, Blue
-    switch (index % 3) {
+    switch (index % 2) {
       case 0:
-        return Colors.red[100]!;
+        return const Color(0xFFF0B3CD)!;
       case 1:
-        return Colors.green[100]!;
-      case 2:
-        return Colors.blue[100]!;
+        return const Color(0xFF80ABDB)!;
       default:
-        return Colors.white;
+        return const Color(0xFFF0B3CD)!;
+    }
+  }
+
+  Color _getButtonColor(int index) {
+    // Alternate card colors Red, Green, Blue
+    switch (index % 2) {
+      case 0:
+        return const Color(0xFFE36DA6)!;
+      case 1:
+        return const Color(0xFF0098D0)!;
+      default:
+        return const Color(0xFFF0B3CD)!;
     }
   }
 }
